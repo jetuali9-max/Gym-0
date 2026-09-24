@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#fff1f7" />
+  <title>FitMotion 3D</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">✦</div>
+        <div>
+          <h1>FitMotion</h1>
+          <p>Interactive 3D fitness</p>
+        </div>
+      </div>
+      <button id="pauseTop" class="icon-btn" type="button" aria-label="Pause animation">Ⅱ</button>
+    </header>
+
+    <nav class="liquid-nav" aria-label="Main navigation">
+      <button class="nav-btn active" data-page="home" type="button">Home</button>
+      <button class="nav-btn" data-page="waist" type="button">Waist</button>
+      <button class="nav-btn" data-page="abs" type="button">Abs</button>
+    </nav>
+
+    <section class="page active" id="page-home">
+      <div class="hero">
+        <div>
+          <span class="eyebrow">3D MOVEMENT LAB</span>
+          <h2>Move better.<br><span>Train smarter.</span></h2>
+          <p>Pick an exercise and interact with the 3D trainer. Drag to rotate, pinch/scroll to zoom, and play the movement.</p>
+        </div>
+      </div>
+      <div class="section-title">
+        <div>
+          <h3>All exercises</h3>
+          <p>Waist + Abs</p>
+        </div>
+        <span id="homeCount"></span>
+      </div>
+      <div class="exercise-grid" id="homeExercises"></div>
+    </section>
+
+    <section class="page" id="page-waist">
+      <div class="section-hero waist">
+        <span class="eyebrow">WAIST / HIP</span>
+        <h2>Mobility &amp; strength</h2>
+        <p>Controlled movement, comfortable range, steady breathing.</p>
+      </div>
+      <div class="exercise-grid" id="waistExercises"></div>
+    </section>
+
+    <section class="page" id="page-abs">
+      <div class="section-hero abs">
+        <span class="eyebrow">ABS / CORE</span>
+        <h2>Build a stronger core</h2>
+        <p>Use controlled reps and stop if an exercise causes pain.</p>
+      </div>
+      <div class="exercise-grid" id="absExercises"></div>
+    </section>
+
+    <div class="modal" id="workoutModal" aria-hidden="true">
+      <div class="modal-backdrop" data-close="1"></div>
+      <div class="workout-sheet" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="sheet-head">
+          <div>
+            <span class="eyebrow" id="modalCategory">3D EXERCISE</span>
+            <h2 id="modalTitle">Exercise</h2>
+          </div>
+          <button class="close-btn" id="closeModal" type="button" aria-label="Close">×</button>
+        </div>
+
+        <div class="viewer-wrap">
+          <div id="viewer"></div>
+          <div class="viewer-label" id="viewerLabel">DRAG TO ROTATE</div>
+          <div class="direction-pill" id="directionPill">MOVE</div>
+          <div class="viewer-status" id="viewerStatus">PLAYING</div>
+        </div>
+
+        <div class="controls">
+          <button class="control primary" id="playBtn" type="button">Ⅱ Pause</button>
+          <button class="control" id="resetBtn" type="button">↺ Reset</button>
+          <button class="control" id="reverseBtn" type="button">↔ Reverse</button>
+          <label class="speed-control">
+            <span>Speed</span>
+            <input id="speedRange" type="range" min="0.35" max="1.8" step="0.05" value="1" />
+            <output id="speedValue">1.0×</output>
+          </label>
+        </div>
+
+        <div class="exercise-info">
+          <div class="info-card">
+            <span>HOW TO</span>
+            <p id="howText"></p>
+          </div>
+          <div class="info-card">
+            <span>FOCUS</span>
+            <p id="focusText"></p>
+          </div>
+          <div class="info-card warning">
+            <span>FORM CHECK</span>
+            <p id="warningText"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Three.js is loaded from a browser ESM CDN. Internet is required for the 3D engine. -->
+  <script type="module" src="script.js"></script>
+</body>
+</html>
